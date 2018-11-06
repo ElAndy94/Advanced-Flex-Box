@@ -1,7 +1,7 @@
 {
-  "name": "trillo",
+  "name": "el-booking-system",
   "version": "1.0.0",
-  "description": "The Trillo App",
+  "description": "El Peliza App",
   "main": "index.js",
   "scripts": {
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
