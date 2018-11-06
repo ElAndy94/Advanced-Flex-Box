@@ -1,1 +1,1 @@
-Trillo
+Peliza Hotels
