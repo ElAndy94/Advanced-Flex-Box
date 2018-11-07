@@ -10,6 +10,12 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: $bp-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
+
   &__input {
     font-family: inherit;
     font-size: inherit;
@@ -104,6 +110,7 @@
 
   &__user-photo {
     height: 3.75rem;
+    width: 3.5rem;
     border-radius: 50%;
     margin-right: 1rem;
   }
@@ -116,11 +123,24 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    display: flex;
+    margin: 0;
+  }
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin-bottom: 0;
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      flex: 1;
     }
   }
 
@@ -159,6 +179,16 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column;
+      padding: 1.5rem 0.5rem;
+    }
   }
 
   &__icon {
@@ -166,6 +196,13 @@
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor;
+
+    @media only screen and (max-width: $bp-small) {
+      margin-right: 0;
+      margin-bottom: 0.7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -176,6 +213,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 ////////
@@ -201,6 +242,11 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
 
   &__stars {
@@ -222,10 +268,11 @@
   }
 
   &__icon-location {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 
   &__rating {
+    font-size: 1.3rem;
     background-color: var(--color-primary);
     color: #fff;
     margin-left: 3rem;
@@ -236,17 +283,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+    }
   }
 
   &__rating-count {
-    font-size: .8rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: .5rem;
+    }
   }
 }
 
@@ -261,11 +320,11 @@
   display: inline-block;
   background-color: transparent;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
 
   & span {
     margin-left: 3px;
-    transition: margin-left .2s;
+    transition: margin-left 0.2s;
   }
 
   &:hover {
@@ -290,7 +349,7 @@
 
   50% {
     transform: scale(1.05);
-    box-shadow: 0 1rem 4rem rgba(0,0,0,.25);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
   }
 
   100% {
@@ -319,7 +378,7 @@
 
   &__item {
     flex: 0 0 50%;
-    margin-bottom: .7rem;
+    margin-bottom: 0.7rem;
   }
 
   &__item::before {
@@ -327,18 +386,21 @@
     display: inline-block;
     height: 1rem;
     width: 1rem;
-    margin-right: .7rem;
+    margin-right: 0.7rem;
 
     // OLDER browsers
-    // background-image: url(../img/chevron-thin-right.svg);
-    // background-size: cover;
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
     //NEWER browsers - masks
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+    @supports(-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+      background-image: none;
+    }
   }
 }
 
@@ -355,7 +417,7 @@
   }
 
   &__friends {
-
+    display: flex;
   }
 
   &__photo {
@@ -366,7 +428,7 @@
     border: 3px solid #fff;
 
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      margin-right: -2rem;
     }
   }
 }
@@ -380,6 +442,11 @@
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -407,7 +474,7 @@
     font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: .4rem;
+    margin-bottom: 0.4rem;
   }
 
   &__user-date {
@@ -440,6 +507,10 @@
   padding: 3.5rem 0;
   text-align: center;
 
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2.5rem 0;
+  }
+
   &__book-now {
     font-size: 2rem;
     font-weight: 300;
@@ -456,7 +527,11 @@
   text-transform: uppercase;
   border-radius: 100px;
   border: none;
-  background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -466,7 +541,7 @@
     display: inline-block;
     height: 100%;
     width: 100%;
-    transition: all .2s;
+    transition: all 0.2s;
   }
 
   &__visible {
@@ -481,7 +556,11 @@
   }
 
   &:hover {
-    background-image: linear-gradient(to left, var(--color-primary), var(--color-primary-dark));
+    background-image: linear-gradient(
+      to left,
+      var(--color-primary),
+      var(--color-primary-dark)
+    );
   }
 
   &:hover &__visible {
@@ -497,4 +576,3 @@
     animation: pulsate 1s infinite;
   }
 }
-
